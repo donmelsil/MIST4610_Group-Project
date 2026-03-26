@@ -19,7 +19,7 @@ We are interested in accurately modeling these relationships, generating sample 
 ## Data Dictionary
 ![Employee Data Dictionary](DataDict_Employees.png)
 ![Customer Data Dictionary](DataDict_Customers.png)
-![StoreLocation and Loyalty Account Data Dictionary]<img width="1412" height="719" alt="DataDict_Cat_StrLoc" src="https://github.com/user-attachments/assets/9ab0ff99-b1a4-4195-8d09-1e05eb3d6ef3" />
+![StoreLocation and Loyalty Account Data Dictionary](<img width="1412" height="719" alt="DataDict_Cat_StrLoc" src="https://github.com/user-attachments/assets/9ab0ff99-b1a4-4195-8d09-1e05eb3d6ef3" />)
 
 ![Orders](DataDict_Orders.png)
 ![OrderItems](DataDict_OrderItems.png)
