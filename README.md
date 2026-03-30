@@ -47,8 +47,8 @@ Overall, the data model supports the core function and operations of a local cof
 | GROUP BY                   | X  | X  |    |    |    |    |    |    |    |     |
 | GROUP BY with HAVING       | X  |    |    |    |    |    |    |    |    |     |
 | Multi-condition WHERE      |    |    |    |    |    |    |    |    |    |     |
-| Built-in Functions         | X  | X  |    |    |    |    |    |    |    |     |
-| REGEXP                     |    |    |    |    |    |    |    |    |    |     |
+| Built-in Functions         | X  | X  | X  |    |    |    |    |    |    |     |
+| REGEXP                     |    |    | x  |    |    |    |    |    |    |     |
 | NOT EXISTS                 |    |    |    |    |    |    |    |    |    |     |
 
 1. Query 1 finds customers who spend more than average by comparing each customer’s total spending to the overall average payment.
@@ -62,6 +62,13 @@ Query 1 allows managers to identify the customers who spend the most, helping th
 ![Query2](Query2.png)
 
 Query 2 allows managers to see which items are popular so they know what is selling well and what might not be selling well. By identifying top-performing items, managers can know which products to restock or promote more of. It also helps with inventory planning and forecasting demand, so they don’t overstock slow items or run out of popular ones.
+
+3. Query 3 finds the total amount of orders from Decemember 2025.
+
+![Query3](Query3.png)
+
+Query 3 allows for managers and employees to see the total amount of orders for a certain month. In the case of query 3 it is for the month of December. This is useful for managers as they can compare the total amount of orders in December to those of other months, which would help to show how orders increase or decrease from month to month. It would help to show how busy a store is based on the total monthly orders.
+
 ## Database information
 Name of Database: al_Group_21482_G7
 Additional Info: Each query listed above is marked in the database used stored procedures which are called through the following format: CALL TP_Q() where "()" is the query number.
