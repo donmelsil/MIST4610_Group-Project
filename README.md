@@ -42,7 +42,7 @@ Overall, the data model supports the core function and operations of a local cof
 ## Queries
 | Feature                     | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |----------------------------|----|----|----|----|----|----|----|----|----|-----|
-| Multiple Table Join        | X  | X  |    |    |    |    |    |    |    |     |
+| Multiple Table Join        | X  | X  |    |    | x  |    |    |    |    |     |
 | Subquery                   | X  |    |    |    |    |    |    |    |    |     |
 | GROUP BY                   | X  | X  |    | X  |    |    |    |    |    |     |
 | GROUP BY with HAVING       | X  |    |    |    |    |    |    |    |    |     |
@@ -74,6 +74,12 @@ Query 3 allows for managers and employees to see the total amount of orders for 
 ![Query4](Query4.png)
 
 Query 4 allows for managers to see what type of payment method is the most popular. The query shows that cash is used the least out of all payment methods. Managers might be able to adopt a card and mobile payments only store policy, since they would be faster for store purchases. It would take more time having to count cash and give that back to the customer if they decide to use that as a method of payment.
+
+5. Query 5 shows the amount of loyalty points attached to a customer ID in descending order.
+
+![Query5](Query5.png)
+
+Query 5 allows for customers to see the total amount of loyalty points they have. This is useful for when they need to redeem for different rewards. It would also be useful for employees and managers to see them when during or after a purchase to help loyalty point redemption.
 
 ## Database information
 Name of Database: al_Group_21482_G7
