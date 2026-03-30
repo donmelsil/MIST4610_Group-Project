@@ -44,11 +44,11 @@ Overall, the data model supports the core function and operations of a local cof
 |----------------------------|----|----|----|----|----|----|----|----|----|-----|
 | Multiple Table Join        | X  | X  |    |    |    |    |    |    |    |     |
 | Subquery                   | X  |    |    |    |    |    |    |    |    |     |
-| GROUP BY                   | X  | X  |    |    |    |    |    |    |    |     |
+| GROUP BY                   | X  | X  |    | X  |    |    |    |    |    |     |
 | GROUP BY with HAVING       | X  |    |    |    |    |    |    |    |    |     |
 | Multi-condition WHERE      |    |    |    |    |    |    |    |    |    |     |
-| Built-in Functions         | X  | X  | X  |    |    |    |    |    |    |     |
-| REGEXP                     |    |    | x  |    |    |    |    |    |    |     |
+| Built-in Functions         | X  | X  | X  | X  |    |    |    |    |    |     |
+| REGEXP                     |    |    | X  |    |    |    |    |    |    |     |
 | NOT EXISTS                 |    |    |    |    |    |    |    |    |    |     |
 
 1. Query 1 finds customers who spend more than average by comparing each customer’s total spending to the overall average payment.
@@ -68,6 +68,12 @@ Query 2 allows managers to see which items are popular so they know what is sell
 ![Query3](Query3.png)
 
 Query 3 allows for managers and employees to see the total amount of orders for a certain month. In the case of query 3 it is for the month of December. This is useful for managers as they can compare the total amount of orders in December to those of other months, which would help to show how orders increase or decrease from month to month. It would help to show how busy a store is based on the total monthly orders.
+
+4. Query 4 finds what payment method is used the most amongst all the stores.
+
+![Query4](Query4.png)
+
+Query 4 allows for managers to see what type of payment method is the most popular. The query shows that cash is used the least out of all payment methods. Managers might be able to adopt a card and mobile payments only store policy, since they would be faster for store purchases. It would take more time having to count cash and give that back to the customer if they decide to use that as a method of payment.
 
 ## Database information
 Name of Database: al_Group_21482_G7
