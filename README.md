@@ -15,7 +15,6 @@ The coffee shop operates with related entities such as products (menu items), su
 
 We are interested in accurately modeling these relationships, generating sample data, and populating the entities and their attributes. We aim to perform functional queries on this data to provide important and valuable business insights, such as identifying popular menu items, managing inventory needs, and supporting decision-making for purchasing and operational efficiency.
 ## Data Model
-## Data Model
 Our model is based on the structure of a hypothetical chain/franchised coffee shop. The orders entity serves as the central part of the system, since it represents each and every transaction made by customers and connects it to multiple entities including employees, products, and payments.
 
 Within the system there are many customers who place orders, and each customer can place multiple orders over time, establishing a one to many relationship between customers and orders entities. Similarly, the coffee shop employs many employees who handle transactions. Each employee can process multiple orders, but each order is handled by a single employee. We identify this relationship as a one to many relationship between Employees and Orders. There also includes a recursive relationship to represent management structure within the coffee shop. Each employee reports to a manager, which is also another employee in the system. We use the ManagerId attribute, which also references the EmployeeID within the same table. As a result this creates a one to many recursive relationship where one manager can supervise multiple employees and each employee reports to only one manager.
@@ -29,7 +28,8 @@ The model then tracks financial transactions through Payments. Each order is ass
 Finally, the coffee chain includes a Loyalty program, which we decided to display through a LoyaltyAccounts entity to manage the customer reward system. Each customer can have one loyalty account, and each loyalty account belongs to a single customer, forming a one to one relationship. This allows both the business and customer to track points and rewards, and specifically for the business to repeat and improve upon customer engagement.
 
 Overall, the data model supports the core function and operations of a local coffee chain by organizing between customers, employees, products, suppliers, and transactions. It ensures the business has a database that can effectively track sales, manage inventory, track consumer behavior and support loyalty programs.
-![Coffee Shop Data Model](ProjectDataModel.png)
+
+![Coffee Shop Data Model](DataModel_CoffeeShop.png)
 ## Data Dictionary
 ![Employee Data Dictionary](DataDict_Employees.png)
 ![Customer Data Dictionary](DataDict_Customers.png)
@@ -42,45 +42,66 @@ Overall, the data model supports the core function and operations of a local cof
 ## Queries
 | Feature                     | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |----------------------------|----|----|----|----|----|----|----|----|----|-----|
-| Multiple Table Join        | X  | X  |    |    | x  |    |    |    |    |     |
-| Subquery                   | X  |    |    |    |    |    |    |    |    |     |
-| GROUP BY                   | X  | X  |    | X  |    |    |    |    |    |     |
-| GROUP BY with HAVING       | X  |    |    |    |    |    |    |    |    |     |
-| Multi-condition WHERE      |    |    |    |    |    |    |    |    |    |     |
-| Built-in Functions         | X  | X  | X  | X  |    |    |    |    |    |     |
-| REGEXP                     |    |    | X  |    |    |    |    |    |    |     |
-| NOT EXISTS                 |    |    |    |    |    |    |    |    |    |     |
+| Multiple Table Join        | X  | X  |    | X  | X  |    | X  |    |  X |  X  |
+| Subquery                   | X  |    |    | X  |    |    |    |    | X  |     |
+| GROUP BY                   | X  | X  |    |    | X  | X  |    |    |    |     |
+| GROUP BY with HAVING       | X  |    |    |    |    |    |    |    |    |  X  |
+| Multi-condition WHERE      |    |    |    | X  |    |    |    |    | X  |  X  |
+| Built-in Functions         | X  | X  | X  |    |    | X  | X  |    |    |  X  |
+| REGEXP                     |    |    | X  |    |    |    |    | X  |    |     |
+| NOT EXISTS                 |    |    |    |    |    |    |    |    | X  |     |
 
 1. Query 1 finds customers who spend more than average by comparing each customer’s total spending to the overall average payment.
    
 ![Query1](Query1.png)
-
 Query 1 allows managers to identify the customers who spend the most, helping them focus on high-value customers. This allows them to create targeted promotions, loyalty rewards, and  strategies to increase revenue. It also helps them make smarter business decisions by understanding customer spending patterns.
 
 2. Query 2 adds up the quantity sold for each product and groups the results by product name so you can see the total units sold for each individual product.
    
 ![Query2](Query2.png)
-
 Query 2 allows managers to see which items are popular so they know what is selling well and what might not be selling well. By identifying top-performing items, managers can know which products to restock or promote more of. It also helps with inventory planning and forecasting demand, so they don’t overstock slow items or run out of popular ones.
 
 3. Query 3 finds the total amount of orders from Decemember 2025.
 
 ![Query3](Query3.png)
-
 Query 3 allows for managers and employees to see the total amount of orders for a certain month. In the case of query 3 it is for the month of December. This is useful for managers as they can compare the total amount of orders in December to those of other months, which would help to show how orders increase or decrease from month to month. It would help to show how busy a store is based on the total monthly orders.
 
-4. Query 4 finds what payment method is used the most amongst all the stores.
+4. Query 4 lists the total revenue generated by credit card payments during 2026. The results are ordered in descending order of total revenue.
 
 ![Query4](Query4.png)
+Query 4 helps managers identify which customers are making large purchases using only credit cards during the 2026 fiscal year. If they notice that most of these high-value transactions come from a small group of repeat customers, it suggests those customers are especially engaged and valuable to the business. With that insight, managers could consider introducing a premium rewards program or offering exclusive perks to these high-spending customers, encouraging them to stay loyal and potentially increasing overall transaction values across store locations.
 
-Query 4 allows for managers to see what type of payment method is the most popular. The query shows that cash is used the least out of all payment methods. Managers might be able to adopt a card and mobile payments only store policy, since they would be faster for store purchases. It would take more time having to count cash and give that back to the customer if they decide to use that as a method of payment.
-
-5. Query 5 shows the amount of loyalty points attached to a customer ID in descending order.
+5. Query 5 lists each store location alongside its total number of orders, total revenue generated, and average order value. The results are ordered in descending order of total revenue.
 
 ![Query5](Query5.png)
+Query 5 allows managers to compare the performances of each store location against each other in a multitude of ways. The ways are total orders, total revenue, and average order value. Total orders would allow managers to understand how many total orders are being processed by each store relative to their counterparts, to understand which locations are seeing more volume. Total revenue gives a little more of this understanding, by allowing managers to dissect even further into which stores are the most profitable. Average order value allows managers to better understand which stores are able to generate more value based on each individual order, possibly justifying raised prices or expanded premium offerings at certain locations.
 
-Query 5 allows for customers to see the total amount of loyalty points they have. This is useful for when they need to redeem for different rewards. It would also be useful for employees and managers to see them when during or after a purchase to help loyalty point redemption.
+6. Query 6 finds what payment method is used the most amongst all the stores.
+
+![Query6](Query6.png)
+Query 6 allows for managers to see what type of payment method is the most popular. The query shows that cash is used the least out of all payment methods. Managers might be able to adopt a card and mobile payments only store policy, since they would be faster for store purchases. It would take more time having to count cash and give that back to the customer if they decide to use that as a method of payment.
+
+7. Query 7 shows the amount of loyalty points attached to a customer ID in descending order.
+
+![Query7](Query7.png)
+Query 7 allows for customers to see the total amount of loyalty points they have. This is useful for when they need to redeem for different rewards. It would also be useful for employees and managers to see them when during or after a purchase to help loyalty point redemption.
+
+8. Query 8 shows all orders placed after March 1, 2026 with order numbers that start with 3.
+
+![Query8](Query8.png)
+Query8 Query 8 allows businesses to see recent transactions and analyze them while focusing on specific categories of orders identified the starting number of their order number. For instance, the number 3 could only relate to in-store transactions so businesses would look at these orders if they want to inquire about them in any way. This is useful for managers and employees when evaluating short-term performance and understanding consumer behavior.
+
+9. Query 9 shows customers that have not yet been served by specific employees at a given store location.
+
+![Query9](Query9.png)
+Query 9 allows managers to understand business distribution among employees, identify oppurtunities for employees to engage with new customers, and improve overall customer experience by ensuring a more balanced interaction with customers and employees.
+
+10. Query 10 shows the suppliers who supply more than 1 product that are priced over 2 dollars.
+
+![Query10](Query10.png)
+Query 10 allows managers to see which suppliers provide the most products to the coffeeshop, focusing on products that are currently available and priced over $2.00. Managers can use this information to make better decisions about supplier relationships and inventory planning. Suppliers with more products and higher value products may be prioritized for future supply orders, and the suppliers with fewer products can be reconsidered for either improving relationships or terminating them..
 
 ## Database information
 Name of Database: al_Group_21482_G7
-Additional Info: Each query listed above is marked in the database used stored procedures which are called through the following format: CALL TP_Q() where "()" is the query number.
+
+Additional Info: Each query listed above is marked in the database used stored procedures which are called through the following format: CALL DNCKJ_Q() where "()" is the query number.
